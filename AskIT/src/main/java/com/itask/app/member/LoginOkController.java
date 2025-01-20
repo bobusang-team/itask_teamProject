@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.example.app.dto.UserDTO;
 import com.itask.app.Execute;
 import com.itask.app.Result;
+import com.itask.app.dto.UserDTO;
 import com.itask.app.member.dao.UserDAO;
 
 public class LoginOkController implements Execute{

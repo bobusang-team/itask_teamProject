@@ -2,7 +2,7 @@ package com.itask.app.member.dao;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.example.app.dto.UserDTO;
+import com.itask.app.dto.UserDTO;
 import com.mybatis.config.MyBatisConfig;
 
 public class UserDAO {
