@@ -56,7 +56,7 @@
 
 	<!-- 마이페이지 메인 진입시 -->
 	<!-- 해당 회원의 닉네임, 모니터, 작성한 게시글 수, 작성한 댓글 수, 뱃지수, 회원의 경력 조회 -->
-	<select id="profile" parameterType>
+	<select id="profile" parameterType=>
 		SELECT U.USER_NUM, U.USER_NICK, U.USER_MONITER, U.USER_CARRER,
 		COUNT(DISTINCT A.ARTICLE_ID) AS ARTICLE_COUNT,
 		COUNT(DISTINCT C.COMMENT_ID) AS COMMENT_COUNT,
