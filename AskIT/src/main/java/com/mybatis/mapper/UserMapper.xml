@@ -12,4 +12,10 @@
 		from tbl_user
 		where user_id = #{userId} and user_pw = #{userPw}
 	</select>
+	
+	<update id = 'pwResetting' parameterType="UserDTO">
+		UPDATE tbl_user
+		SET user_pw = #{userPw}
+		WHERE user_id = #{userId} and user_phone = #{userPhone}
+	</update>
 </mapper>
