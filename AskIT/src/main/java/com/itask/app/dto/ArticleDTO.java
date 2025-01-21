@@ -32,12 +32,8 @@ public class ArticleListDTO {
 	 */	
 	private int articleView;
 	private int articleMoniter;
-<<<<<<<< HEAD:AskIT/src/main/java/com/itask/app/dto/ArticleListDTO.java
 	private int userMoniter;
 	private String userCert;
-	public int getUserNick() {
-		return userNick;
-========
 	private String userNick; //관리자페이지에서 필요한 DTO
 	private String grade;
 	
@@ -58,11 +54,7 @@ public class ArticleListDTO {
 	}
 	public int getUserNum() {
 		return userNum;
->>>>>>>> 6e7e5025d494ab7115ec10d451639189882c8e94:AskIT/src/main/java/com/itask/app/dto/ArticleDTO.java
-	}
-	public void setUserNick(int userNick) {
-		this.userNick = userNick;
-	}
+		
 	public int getArticleNum() {
 		return articleNum;
 	}
