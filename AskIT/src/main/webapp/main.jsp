@@ -50,16 +50,46 @@
 		<main>
 			<div class="main-container">
 				<div class="main-content-wrapper">
-					<!-- 랭킹 (왼쪽 상단) -->
+					<!-- 명예의 전당 (왼쪽 상단) -->
 
-					<section class="main-ranking-body">
-						<div class="main-ranking-list">
-							<h1>명예의 전당</h1>
-							<div class="main-ranking-container" id="main-ranking-container">
-
-							</div>
-						</div>
-					</section>
+					<script>
+					//명예의 전당 데이터를 불러오는 함수
+					async function fetchRanking(){
+						try{
+							const response = await fetch('/ranking/mainRank.ma'); // 서블릿 호출
+							if(!response.ok){
+								throw new Error('서버 응답 오류');
+							}
+							const data = await response.json(); //joson -> 데이터로 변환
+							
+							const rankingContainer = document.getElementById('main-ranking-container');
+							rankingContainer.innerHTML = ''; //기존 목록 초기화
+							
+							data.forEach((user, index) => {
+								const rankingCard = document.createElement('div');
+								rankingCard.classList.add('ranking-card');
+								rankingCard.innerHTML = `
+								<div class = "ranking">${index + 1}</div>
+								<div class = "info">
+									<dic class = "name"><a href="/user/${user.userId}" class="ranking=link">${user.userNick}</a></div>
+									<div class = "details">${user.userCareer || '경력 정보 없음'}</div>
+									</div>
+									<div class = "icon">
+										<img src="/path/to/icon/${user.userId}.jpg" alt="${user.userNick} icon" />
+										</div>
+										`;
+										rankingContainer.appendChild(rankingCard);
+									});
+							} catch (error) {
+								console.error('데이터를 불러오는 중 error 발생:', error);
+								}											
+							}
+					
+					setInterval(fetchRanking, 60000); //60초마다 갱신
+					fetchRanking(); // 페이지 로딩 시 초기 실행															
+					</script>
+					
+					
 
 					<!-- 메인 (랭킹 오른쪽에 위치) -->
 					<section class="main-best">
