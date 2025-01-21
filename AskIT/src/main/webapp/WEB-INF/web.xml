@@ -20,6 +20,17 @@
   	<url-pattern>*.me</url-pattern>
   </servlet-mapping>
   
+  <!-- 메인 -->
+  <servlet>
+     <servlet-name>main</servlet-name>
+     <servlet-class>com.itask.app.dev.MainFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>main</servlet-name>
+     <url-pattern>*.main</url-pattern>
+  </servlet-mapping>
+  
+  
   <!-- 개발 -->
   <servlet>
      <servlet-name>Dev</servlet-name>

@@ -1,4 +1,4 @@
-package com.example.app.dto;
+package com.itask.app.dto;
 
 public class UserDTO {
 //	CREATE TABLE TBL_USER (
@@ -29,14 +29,15 @@ public class UserDTO {
 	private String userMoniter = "0";
 	private String userAgree = "F";
 	private String userCareer = "";
+	
 	public int getUserNum() {
 		return userNum;
 	}
 
 	//getter, setter
 	//userNum은 setter 필요하지 않음 -> 시퀀스로 처리할거임
-	public int getUserNum(int userNum) {
-		return userNum;
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
 	}
 	public String getUserId() {
 		return userId;
