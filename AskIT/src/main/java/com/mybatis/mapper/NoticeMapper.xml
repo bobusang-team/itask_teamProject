@@ -16,6 +16,7 @@
 		WHERE notice_num=#{};
 	</select>
 
+</mapper>
 	<!-- 중요사항 -->
 	<!-- id, parameterType 팀원끼리 통일하기 -->
 	

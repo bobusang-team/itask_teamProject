@@ -4,6 +4,3 @@
 
 <mapper namespace="sec"></mapper>
 
-<mapper namespace="sec">
-</mapper>
-
