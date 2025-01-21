@@ -1,4 +1,4 @@
-package com.example.app.dto;
+package com.itask.app.dto;
 
 public class OwnDTO {
 //	CREATE TABLE TBL_OWN (

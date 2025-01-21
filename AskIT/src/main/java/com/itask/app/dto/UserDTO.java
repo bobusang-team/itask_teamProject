@@ -1,4 +1,4 @@
-package com.example.app.dto;
+package com.itask.app.dto;
 
 public class UserDTO {
 //	CREATE TABLE TBL_USER (
@@ -29,6 +29,7 @@ public class UserDTO {
 	private String userMoniter = "0";
 	private String userAgree = "F";
 	private String userCareer = "";
+	
 	public int getUserNum() {
 		return userNum;
 	}
