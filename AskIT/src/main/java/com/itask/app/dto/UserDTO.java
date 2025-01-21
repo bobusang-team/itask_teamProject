@@ -17,150 +17,102 @@ public class UserDTO {
 //		    CONSTRAINT USER_NUM_PK PRIMARY KEY (USER_NUM),
 //		    CONSTRAINT USER_NUM_UNIQUE UNIQUE (USER_ID, USER_NICK,USER_PHONE)
 //		);
-	
-	private int userNum;
-	private String userId;
-	private String userName;
-	private String userNick;
+
+	private int userNum; // pk
+	private String userId; // uk
 	private String userPw;
-	private String userPhone;
+	private String userName;
+	private String userNick; // uk
+	private String userPhone; // uk
 	private String userMail;
-	private boolean userCert;
-	private String userMoniter;
-	private boolean userAgree;
-	private String userCareer;
+	private char userCert = 'F';
+	private String userMoniter = "0";
+	private String userAgree = "F";
+	private String userCareer = "";
 	private String userJoinDate;
-	private String grade; //관리자에서 출력할 때 필요
+	private String grade; // 관리자에서 출력할 때 필요
 	private String badge;
-	
-	 
-	
+
+
+
 	public int getUserNum() {
 		return userNum;
-	}
-
-
-
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
 	}
 
 	public String getUserId() {
 		return userId;
 	}
 
-
-
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
-
-
-	public String getUserName() {
-		return userName;
-	}
-
-
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-
-	public String getUserNick() {
-		return userNick;
-	}
-
-
-
-	public void setUserNick(String userNick) {
-		this.userNick = userNick;
-	}
-
-
 
 	public String getUserPw() {
 		return userPw;
 	}
 
-
-
 	public void setUserPw(String userPw) {
 		this.userPw = userPw;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
 
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserNick() {
+		return userNick;
+	}
+
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
 
 	public String getUserPhone() {
 		return userPhone;
 	}
 
-
-
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
-
-
 
 	public String getUserMail() {
 		return userMail;
 	}
 
-
-
 	public void setUserMail(String userMail) {
 		this.userMail = userMail;
 	}
 
-
-
-	public boolean isUserCert() {
+	public char getUserCert() {
 		return userCert;
 	}
 
-
-
-	public void setUserCert(boolean userCert) {
+	public void setUserCert(char userCert) {
 		this.userCert = userCert;
 	}
-
-
 
 	public String getUserMoniter() {
 		return userMoniter;
 	}
 
-
-
 	public void setUserMoniter(String userMoniter) {
 		this.userMoniter = userMoniter;
 	}
 
-
-
-	public boolean isUserAgree() {
+	public String getUserAgree() {
 		return userAgree;
 	}
 
-
-
-	public void setUserAgree(boolean userAgree) {
+	public void setUserAgree(String userAgree) {
 		this.userAgree = userAgree;
 	}
 
-
-
 	public String getUserCareer() {
 		return userCareer;
-	}
-
-
-
-	public void setUserCareer(String userCareer) {
-		this.userCareer = userCareer;
 	}
 
 	public String getUserJoinDate() {
@@ -171,43 +123,35 @@ public class UserDTO {
 		this.userJoinDate = userJoinDate;
 	}
 
-	
-
 	public String getGrade() {
 		return grade;
 	}
-
-
 
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 
-
-
 	public String getBadge() {
 		return badge;
 	}
-
-
 
 	public void setBadge(String badge) {
 		this.badge = badge;
 	}
 
 	public String getFormattedMoniter() {
-	    if (userMoniter == null || userMoniter.isEmpty()) {
-	        return "0inch 0m";
-	    }
+		if (userMoniter == null || userMoniter.isEmpty()) {
+			return "0inch 0m";
+		}
 
-	    try {
-	        int monitorValue = Integer.parseInt(userMoniter); 
-	        int inch = monitorValue / 100; 
-	        int moniter = monitorValue % 100; 
-	        return inch + "inch " + moniter + "m";
-	    } catch (NumberFormatException e) {
-	        return "Invalid format";
-	    }
+		try {
+			int monitorValue = Integer.parseInt(userMoniter);
+			int inch = monitorValue / 100;
+			int moniter = monitorValue % 100;
+			return inch + "inch " + moniter + "m";
+		} catch (NumberFormatException e) {
+			return "Invalid format";
+		}
 	}
 
 	@Override
@@ -218,6 +162,4 @@ public class UserDTO {
 				+ ", userCareer=" + userCareer + ", userJoinDate=" + userJoinDate + "]";
 	}
 
-	
-	
 }
