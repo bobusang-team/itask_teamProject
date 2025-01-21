@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="attach">
+	<insert id="insert" parameterType="AttachfileDTO">
+		insert into
+		TBL_ATTACHFILE(ATTACHFILE_NUM, ATTACHFILE_NAME, ARTICLE_NUM)
+		values(#{attachfileNum}, #{attatchfileName}, #{articleNum})
+	</insert>
+	
+	<select id="select" parameterType="int" resultType="FileDTO">
+		select ATTACHFILE_NUM, ATTACHFILE_NAME, ARTICLE_NUM
+		from TBL_ATTACHFILE
+		where ARTICLE_NUM = #{articleNum}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from TBL_ATTACHFILE 
+		where ARTICLE_NUM = #{articleNum}
+	</delete>
+</mapper>

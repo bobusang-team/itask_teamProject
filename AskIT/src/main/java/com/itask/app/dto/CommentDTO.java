@@ -1,4 +1,4 @@
-package com.example.app.dto;
+package com.itask.app.dto;
 
 public class CommentDTO {
 //	CREATE TABLE TBL_COMMENT (
@@ -23,6 +23,7 @@ public class CommentDTO {
 	private boolean commentDelete;
 	private String commentDate;
 	private String commentModifyDate;
+	
 	public int getCommentNum() {
 		return commentNum;
 	}
