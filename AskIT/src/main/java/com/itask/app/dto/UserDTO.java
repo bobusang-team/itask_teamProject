@@ -115,6 +115,10 @@ public class UserDTO {
 		return userCareer;
 	}
 
+	public void setUserCert(char userCert) {
+		this.userCert = userCert;
+	}
+
 	public String getUserJoinDate() {
 		return userJoinDate;
 	}
