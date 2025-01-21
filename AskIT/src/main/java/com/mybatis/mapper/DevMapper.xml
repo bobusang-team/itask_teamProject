@@ -1,4 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="dev"></mapper>
+<mapper namespace="dev">
+ 
+      <!-- 게시물 리스트  조회 -->
+   <select id = "selectAll" resultType = "ArticleListDTO" parameterType="int">
+	<!-- 댓글 포함하지않은 게시글 목록페이지 -->
+		<![CDATA[
+		SELECT *
+        FROM (
+            SELECT ROWNUM AS rnum, subquery.*
+            FROM (
+                SELECT 
+                  	U.USER_NICK
+					A.ARTICLE_NUM, 
+					A.ARTICLE_TITLE, 
+					A.ARTICLE_TEXT, 
+					A.ARTICLE_DATE, 
+					A.ARTICLE_VIEW, 
+					A.ARTICLE_MONITER_NUM, 
+					A.ARTICLE_TOPCATE, 
+					A.ARTICLE_BOTCATE, 
+					A.ARTICLE_TAGNAME
+				FROM TBL_ARTICLE A
+                JOIN TBL_USER U ON A.USER_NUM = U.USER_NUM
+				WHERE ((A.ARTICLE_TOPCATE) = '개발'AND (A.ARTICLE_BOTCATE) = #{articleBotcate})
+				AND A.USER_NUM = #{userNum}
+				ORDER BY A.ARTICLE_DATE DESC;
+            ) subquery
+            WHERE ROWNUM <= #{endRow}
+        )
+        WHERE rnum > #{startRow}
+        ]]>
+   </select>
+  
+   
+   <!-- BoardMapper.xml에 total을 가져오기 위한 쿼리 작성 -->
+	<!-- 게시글 총 개수 -->
+	<select id="getTotal" resultType="int">
+        <![CDATA[
+        SELECT COUNT(article_num) 
+        FROM tbl_board
+        ]]>
+	</select>
+	
+	   	<!-- 마지막 생성된 시퀀스 값을 가져오는 쿼리 -->
+	<select id="getCurrentBoardNumber" resultType="int">
+		SELECT
+		seq_article.CURRVAL FROM DUAL
+	</select>
+	
+	<select id="select" parameterType="int"
+		resultType="ArticleListDTO">
+		select
+		U.USER_NUM, U.USER_ID, A.ARTICLE_NUM ,
+		A.ARTICLE_TITLE ,
+		A.ARTICLE_DATE , A.ARTICLE_VIEW
+		from TBL_USER U
+		join TBL_ARTICLE A
+		on ARTICLE_NUM = #{articleNum} and
+		U.USER_NUM = #{userNum} and
+		A.USER_NUM = #{userNum}
+	</select>
+   
+   <!-- 게시물 상세페이지  조회 -->
+   <select id = "selectOne" resultType = "ArticleListDTO" parameterType="int">
+		<!-- 댓글 포함하지 않은 게시글 상세페이지 -->
+		SELECT 
+		A.ARTICLE_NUM, 
+		U.USER_NICK,
+		A.ARTICLE_TITLE, 
+		A.ARTICLE_TEXT, 
+		A.ARTICLE_DATE, 
+		A.ARTICLE_VIEW, 
+		A.ARTICLE_MONITER_NUM, 
+		A.ARTICLE_TOPCATE, 
+		A.ARTICLE_BOTCATE, 
+		A.ARTICLE_TAGNAME
+		FROM TBL_ARTICLE A
+		JOIN TBL_USER U ON A.USER_NUM = U.USER_NUM
+		WHERE ((A.ARTICLE_TOPCATE) = '개발'AND (A.ARTICLE_BOTCATE) = '질문')
+		AND A.USER_NUM = #{userNum}
+   </select>
+
+   
+   <!-- 게시물 수정 -->
+    <update id="update" parameterType = "ArticleDetailDTO">
+      UPDATE 
+      TBL_ARTICLE
+      SET
+      A.ARTICLE_TITLE = #{articleTitle}, 
+      A.ARTICLE_TEXT = #{articleText}, 
+      WHERE article_num = #{articleNum}
+    </update>
+    
+    <!-- 게시물 삭제 -->
+    <delete id ="delete" parameterType = "int">
+     DELETE 
+     FROM TBL_ARTICLE
+     WHERE article_num = #{articleNum}
+    </delete>
+    
+    <!-- 조회수 증가 -->
+   <update id="increaseView" parameterType = "ArticleDetailDTO">
+    UPDATE posts SET  article_view = article_view + 1 
+    WHERE article_num = #{articleNum}
+   </update>
+</mapper>
+   
+   
+

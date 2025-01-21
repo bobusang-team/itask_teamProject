@@ -1,6 +1,6 @@
 package com.itask.app.dto;
 
-public class ArticleDTO {
+public class ArticleListDTO {
 //	CREATE TABLE TBL_ARTICLE (
 //		    ARTICLE_NUM NUMBER NOT NULL,
 //		    USER_NUM NUMBER NOT NULL,
@@ -19,25 +19,44 @@ public class ArticleDTO {
 //		    CONSTRAINT TBL_USER_FK FOREIGN KEY (USER_NUM) REFERENCES TBL_USER (USER_NUM) ON DELETE CASCADE
 //		);
 	
-	private int userNum;
+	
 	private int articleNum;
+	private int userNum;
 	private String articleTopcate;
 	private String articleBotcate;
 	private String articleTagname;
 	private String articleTitle;
 	private String articleText;
-	private String articledate;
-	private String articleModifyDate;
+	private String articleDate;
+	/*
+	 * private String articleModifyDate;
+	 */	
 	private int articleView;
 	private int articleMoniter;
+	private int userMoniter;
+	private String userCert;
+	private String userNick; //관리자페이지에서 필요한 DTO
+	private String grade;
 	
 	
+	
+	
+	public String getUserNick() {
+		return userNick;
+	}
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	public int getUserNum() {
 		return userNum;
 	}
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
-	}
+	
 	public int getArticleNum() {
 		return articleNum;
 	}
@@ -74,17 +93,11 @@ public class ArticleDTO {
 	public void setArticleText(String articleText) {
 		this.articleText = articleText;
 	}
-	public String getArticledate() {
-		return articledate;
+	public String getArticleDate() {
+		return articleDate;
 	}
-	public void setArticledate(String articledate) {
-		this.articledate = articledate;
-	}
-	public String getArticleModifyDate() {
-		return articleModifyDate;
-	}
-	public void setArticleModifyDate(String articleModifyDate) {
-		this.articleModifyDate = articleModifyDate;
+	public void setArticleDate(String articleDate) {
+		this.articleDate = articleDate;
 	}
 	public int getArticleView() {
 		return articleView;
@@ -98,15 +111,30 @@ public class ArticleDTO {
 	public void setArticleMoniter(int articleMoniter) {
 		this.articleMoniter = articleMoniter;
 	}
-	
+	public int getUserMoniter() {
+		return userMoniter;
+	}
+	public void setUserMoniter(int userMoniter) {
+		this.userMoniter = userMoniter;
+	}
+	public String getUserCert() {
+		return userCert;
+	}
+	public void setUserCert(String userCert) {
+		this.userCert = userCert;
+	}
 	
 	@Override
 	public String toString() {
-		return "ArticleDTO [userNum=" + userNum + ", articleNum=" + articleNum + ", articleTopcate="
+		return "ArticleListDTO [userNick=" + userNick + ", articleNum=" + articleNum + ", articleTopcate="
 				+ articleTopcate + ", articleBotcate=" + articleBotcate + ", articleTagname=" + articleTagname
-				+ ", articleTitle=" + articleTitle + ", articleText=" + articleText + ", articledate=" + articledate
-				+ ", articleModifyDate=" + articleModifyDate + ", articleView=" + articleView + ", articleMoniter="
-				+ articleMoniter + "]";
+				+ ", articleTitle=" + articleTitle + ", articleText=" + articleText + ", articleDate=" + articleDate
+				+ ", articleView=" + articleView + ", articleMoniter=" + articleMoniter + ", userMoniter=" + userMoniter
+				+ ", userCert=" + userCert + "]";
 	}
+	
+	
+	
+	
 
 }

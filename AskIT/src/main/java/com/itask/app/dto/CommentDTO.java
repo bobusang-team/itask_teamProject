@@ -23,6 +23,7 @@ public class CommentDTO {
 	private boolean commentDelete;
 	private String commentDate;
 	private String commentModifyDate;
+	
 	public int getCommentNum() {
 		return commentNum;
 	}
