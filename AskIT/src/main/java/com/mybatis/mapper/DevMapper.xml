@@ -23,7 +23,8 @@
 					A.ARTICLE_TAGNAME
 				FROM TBL_ARTICLE A
                 JOIN TBL_USER U ON A.USER_NUM = U.USER_NUM
-				WHERE (A.ARTICLE_TOPCATE) = '개발'AND (A.ARTICLE_BOTCATE) = '질문'
+				WHERE ((A.ARTICLE_TOPCATE) = '개발'AND (A.ARTICLE_BOTCATE) = #{articleBotcate})
+				AND A.USER_NUM = #{userNum}
 				ORDER BY A.ARTICLE_DATE DESC;
             ) subquery
             WHERE ROWNUM <= #{endRow}
@@ -84,14 +85,11 @@
    
    <!-- 게시물 수정 -->
     <update id="update" parameterType = "ArticleDetailDTO">
-         UPDATE 
+      UPDATE 
       TBL_ARTICLE
       SET
       A.ARTICLE_TITLE = #{articleTitle}, 
       A.ARTICLE_TEXT = #{articleText}, 
-      A.ARTICLE_TOPCATE = #{articleTopcate}, 
-      A.ARTICLE_BOTCATE = #{articleBotcate}, 
-      A.ARTICLE_TAGNAME = #{articleTagname}
       WHERE article_num = #{articleNum}
     </update>
     

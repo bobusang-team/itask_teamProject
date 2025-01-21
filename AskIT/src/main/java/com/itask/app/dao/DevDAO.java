@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-
+import com.itask.app.dto.ArticleDetailDTO;
 import com.itask.app.dto.ArticleListDTO;
 import com.mybatis.config.MyBatisConfig;
 
@@ -19,50 +19,34 @@ public class DevDAO {
 		
     //모든 게시글 가져오기
 	public List<ArticleListDTO> selectAll(Map<String, Integer> pageMap) {
+	    System.out.println("DAO selectAll 실행");
+	    System.out.println("pageMap: " + pageMap);
 		List<ArticleListDTO> list = sqlSession.selectList("dev.selectAll", pageMap);
+		System.out.println("조회 결과: " + list);
 		return list;
 	}
 	
-
-    
-    // 게시물 삭제
-    public boolean deleteArticle(int articleNum) {
-        try {
-            int result = sqlSession.delete("dev.deleteArticle", articleNum);
-            return result > 0; // 성공 여부 반환
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false; // 실패 시 false 반환
-        }
-    }
-    
-    // 게시물 수정
-    public boolean modifyArticle(ArticleListDTO articleDTO) {
-        try {
-            int result = sqlSession.update("dev.update", articleDTO);
-            return result > 0; // 성공 여부 반환
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false; // 실패 시 false 반환
-        }
-    }
-    
-    // 게시물 조회수 증가
-    public boolean increaseView(int articleNum) {
-        try {
-            int result = sqlSession.update("dev.increaseView", articleNum);
-            return result > 0; // 성공 여부 반환
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false; // 실패 시 false 반환
-        }
-    }
-    
     // 게시글 총 개수 가져오기
 	public int getTotal() {
 		return sqlSession.selectOne("dev.getTotal");
 	}
+	
+    //조회수 증가
+	public void increaseView(int articleNum) {
+		sqlSession.update("dev.increaseView", articleNum);
+	}
+	
+	//게시글 삭제
+	public void delete(int articleNum) {
+		sqlSession.delete("dev.delete", articleNum);
+	}
+	
+	//게시글 수정
+	public void update(ArticleDetailDTO articleDetailDTO) {
+		sqlSession.update("dev.update", articleDetailDTO);
+	}
 
+	
 	public ArticleListDTO selectOne(int articleNum) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("dev.selectOne", articleNum);

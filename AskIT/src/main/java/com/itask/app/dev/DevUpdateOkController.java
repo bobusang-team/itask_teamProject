@@ -6,19 +6,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itask.app.Execute;
 import com.itask.app.Result;
 import com.itask.app.dao.DevDAO;
+import com.itask.app.dto.ArticleDetailDTO;
 
-public class DevModifyController {
+public class DevUpdateOkController implements Execute{
 
 	public Result execute(HttpServletRequest request, HttpServletResponse response) 
-			throws IOException, ServletException {
-		int articleNum = Integer.valueOf(request.getParameter("articleNum"));
+			
+		throws IOException, ServletException {
 		DevDAO devDAO = new DevDAO();
+		ArticleDetailDTO articleDetailDTO = new ArticleDetailDTO();
+		Result result = new Result();
 		
-		request.setAttribute("dev", devDAO.select(articleNum));
+			
+			
 		
-		request.getRequestDispatcher("/app/board/boardUpdate.jsp").forward(request, response);
 		return null;
 	}
 

@@ -16,10 +16,10 @@ public class DevDetailController implements Execute{
 	public Result execute(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException{
 		
-		int articleNumber = Integer.parseInt(request.getParameter("articleNumber"));
+		int articleNum = Integer.parseInt(request.getParameter("articleNum"));
 		
 		DevDAO devDAO = new DevDAO();
-	    ArticleListDTO dev = devDAO.selectOne(articleNumber); // 특정 게시글 조회
+	    ArticleListDTO dev = devDAO.selectOne(articleNum); // 특정 게시글 조회
 	    request.setAttribute("dev", dev);
 		
 	    Result result = new Result();

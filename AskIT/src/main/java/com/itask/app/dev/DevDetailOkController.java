@@ -19,15 +19,11 @@ public class DevDetailOkController implements Execute {
 			throws IOException, ServletException {
 		int articleNum = Integer.valueOf(request.getParameter("articleNum"));
 		DevDAO devDAO = new DevDAO();
-		ArticleListDTO articleDTO = devDAO.select(articleNum); 
+		ArticleListDTO articleListDTO = devDAO.select(articleNum); 
 		Result result = new Result();
-		AttachfileDAO attachfileDAO = new AttachfileDAO();
-		
-		List<AttachfileDTO> attach = AttachfileDAO.select(articleNum);
-		articleDTO.setFile(attach);
 
 		 devDAO.increaseView(articleNum);  // 조회수 증가
-		 request.setAttribute("dev", articleDTO); 
+		 request.setAttribute("dev", articleListDTO); 
 
 		result.setPath("/html/article/dev/askDetail.jsp");
 		result.setRedirect(false);

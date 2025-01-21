@@ -65,21 +65,20 @@ public class DevFrontController extends HttpServlet {
     			request.getRequestDispatcher("/html/article/dev/askDetail.jsp").forward(request, response);
     			break;   
        
-            case "/dev/modify.dev": // 게시물 수정 화면
+            case "/dev/update.dev": // 게시물 수정 화면
                 System.out.println("게시물 수정 화면 실행!");
-                result = new DevModifyController().execute(request, response);
+                result = new DevUpdateController().execute(request, response);
                 break;
 
-            case "/dev/modifyOk.dev": // 게시물 수정 처리
+            case "/dev/updateOk.dev": // 게시물 수정 처리
                 System.out.println("게시물 수정 처리 실행!");
-                result = new DevModifyOkController().execute(request, response);
+                result = new DevUpdateOkController().execute(request, response);
                 break;
 
             case "/dev/delete.dev": // 게시물 삭제
                 System.out.println("게시물 삭제 실행!");
                 result = new DevDeleteController().execute(request, response);
                 break;
-
         }
 
         // 결과 처리

@@ -26,7 +26,7 @@ public class DevListController {
 	    int page = (temp == null) ? 1 : Integer.valueOf(temp); // 페이지 번호 기본값: 1
 		
 	    int rowCount = 10; // 한 페이지당 게시글 수
-	    int pageCount = 5; // 페이지 버튼 수
+	    int pageCount = 3; // 페이지 버튼 수
 	    
 	    
 	    int startRow = (page - 1) * rowCount + 1;
