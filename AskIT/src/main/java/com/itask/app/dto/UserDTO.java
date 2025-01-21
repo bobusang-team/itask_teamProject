@@ -36,8 +36,8 @@ public class UserDTO {
 
 	//getter, setter
 	//userNum은 setter 필요하지 않음 -> 시퀀스로 처리할거임
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
+	public int getUserNum(int userNum) {
+		return userNum;
 	}
 	public String getUserId() {
 		return userId;
