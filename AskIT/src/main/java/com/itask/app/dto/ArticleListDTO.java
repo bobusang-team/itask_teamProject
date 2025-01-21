@@ -19,8 +19,9 @@ public class ArticleListDTO {
 //		    CONSTRAINT TBL_USER_FK FOREIGN KEY (USER_NUM) REFERENCES TBL_USER (USER_NUM) ON DELETE CASCADE
 //		);
 	
-	private int userNick;
+	
 	private int articleNum;
+	private int userNum;
 	private String articleTopcate;
 	private String articleBotcate;
 	private String articleTagname;
@@ -54,7 +55,8 @@ public class ArticleListDTO {
 	}
 	public int getUserNum() {
 		return userNum;
-		
+	}
+
 	public int getArticleNum() {
 		return articleNum;
 	}
