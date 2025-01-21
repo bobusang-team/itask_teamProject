@@ -7,6 +7,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>로그인</title>
+<script defer
+	src="${pageContext.request.contextPath }/assets/js/member/login.js"></script>
 <link rel="stylesheet" href="./../../assets/css/member/login.css">
 <link rel="stylesheet" href="./../../assets/css/header.css">
 <link rel="stylesheet" href="./../../assets/css/footer.css">
@@ -16,10 +18,21 @@
 	<main class="itAskBox">
 		<a href="#"> <img src="./../../assets/img/logo.png" alt="ITASK 로고">
 		</a>
+		<%
+			String loginFailMsg = (String)session.getAttribute("loginFail");
+			if(loginFailMsg != null){
+		%>
+		<script>
+			alert("<%= loginFailMsg %>");
+		</script>
+		<%} 
+			//로그인 실패 메시지값 해제 
+			session.removeAttribute("loginFail");
+		%>
 
 		<!-- 로그인 폼 -->
-		<form action="${pageContext.request.contextPath }/member/loginOk.me" name="keh-login-loginForm" class="keh-login-loginForm"
-			method="post">
+		<form action="${pageContext.request.contextPath }/member/loginOk.me"
+			name="keh-login-loginForm" class="keh-login-loginForm" method="post">
 			<!-- 아이디입력칸 -->
 			<input type="text" name="userId" class="keh-login-id"
 				placeholder="ID">
@@ -33,10 +46,11 @@
 			<button class="keh-login-loginBtn">로그인</button>
 		</form>
 		<p>
-			<a href="${pageContext.request.contextPath }/app/member/pwfind.jsp" class="keh-login-pwBtn">비밀번호 찾기</a> <a
-				href="${pageContext.request.contextPath }/app/member/join.jsp" class="keh-login-joinBtn">회원가입</a>
+			<a href="${pageContext.request.contextPath }/app/member/pwfind.jsp"
+				class="keh-login-pwBtn">비밀번호 찾기</a> <a
+				href="${pageContext.request.contextPath }/app/member/join.jsp"
+				class="keh-login-joinBtn">회원가입</a>
 		</p>
-
 	</main>
 	<jsp:include page="../basic/footer.jsp" />
 </body>

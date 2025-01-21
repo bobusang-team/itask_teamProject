@@ -3,7 +3,7 @@
 <!-- 헤더 -->
 <header class="header-box">
 	<div class="header-container">
-		<a href="main.jsp" class="header-brand"> <img
+		<a href="/AskIT/main.jsp" class="header-brand"> <img
 			src="${pageContext.request.contextPath }/assets/img/logo/logo_b.png"
 			alt="iTask Logo" class="header-logo">
 		</a>
