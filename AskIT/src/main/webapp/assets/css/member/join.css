@@ -1,8 +1,8 @@
 /* 회원가입 페이지 2/3 : 회원정보 입력*/
-*{ padding: 0; margin: 0;}
+/* *{ padding: 0; margin: 0;} */
 .itAskBox{
   width: 1200px;
-  margin: auto;
+  margin: 150px auto;
   text-align: center;
   color: #606060;
 }
@@ -11,7 +11,7 @@
 .itAskBox>a{
   width: 370px;
   display: block;
-  margin: 200px auto 50px;
+  margin: 0px auto 50px;
 }
 .itAskBox>a>img{
   width: 100%;
