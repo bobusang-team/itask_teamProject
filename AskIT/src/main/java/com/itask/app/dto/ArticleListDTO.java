@@ -19,8 +19,9 @@ public class ArticleListDTO {
 //		    CONSTRAINT TBL_USER_FK FOREIGN KEY (USER_NUM) REFERENCES TBL_USER (USER_NUM) ON DELETE CASCADE
 //		);
 	
-	private int userNick;
+	
 	private int articleNum;
+	private int userNum;
 	private String articleTopcate;
 	private String articleBotcate;
 	private String articleTagname;
@@ -34,12 +35,28 @@ public class ArticleListDTO {
 	private int articleMoniter;
 	private int userMoniter;
 	private String userCert;
-	public int getUserNick() {
+	private String userNick; //관리자페이지에서 필요한 DTO
+	private String grade;
+	
+	
+	
+	
+	public String getUserNick() {
 		return userNick;
 	}
-	public void setUserNick(int userNick) {
+	public void setUserNick(String userNick) {
 		this.userNick = userNick;
 	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public int getUserNum() {
+		return userNum;
+	}
+
 	public int getArticleNum() {
 		return articleNum;
 	}
