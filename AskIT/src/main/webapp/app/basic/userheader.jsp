@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.itask.app.dto.UserDTO" %>
 
 <!-- 로그인 성공 시 헤더 -->
 <!-- 헤더 -->
@@ -27,27 +28,53 @@
         <ul class="head-container">
           <li class="head-item">
             <!-- 내정보 모니터 -->
+            <%@ page session="true" %>
+			<%
+			    UserDTO userInfo = (UserDTO)session.getAttribute("userDTO");
+			
+			    if (userInfo != null) {
+			        String userNick = userInfo.getUserNick();
+			        String userMoniter = userInfo.getUserMoniter();
+			%>
+			    <script>
+			        sessionStorage.setItem('userNick', '<%= userNick %>');
+			        sessionStorage.setItem('userMoniter', '<%= userMoniter %>');
+			    </script>
+			<%
+			    } else {
+			%>
+			    <script>
+			        let userNick = sessionStorage.getItem('userNick');
+			        let userMoniter = sessionStorage.getItem('userMoniter');
+			        if (userNick && userMoniter) {
+			        } else {
+			            window.location.href = "/AskIT/app/member/login.jsp";
+			        }
+			    </script>
+			<%
+			    }
+			%>
+            
             <a href="#" class="head-link">
               <span id="user-name">
-              <%
-				com.itask.app.dto.UserDTO userInfo=(com.itask.app.dto.UserDTO)session.getAttribute("userDTO");
-              	String userNick = userInfo.getUserNick();
-				out.println(userNick+"님");
-			%>
+			<script>
+			document.write(sessionStorage.getItem("userNick")+"님");
+			</script>
               </span>
               <div class="monitor-box">
                 <div class="monitor-level" id="monitor-levelup">
-                	<%
-                		int userInch = Integer.parseInt(userInfo.getUserMoniter())/100;
-                		out.println(userInch+" inch");
-                	%>
+                <script>
+                /* userMoniter is String type (string to integer) */
+                let userInch = parseInt(sessionStorage.getItem("userMoniter"))/100;
+				document.write(userInch+" inch");
+				</script>
                 </div>
                 <img src="${pageContext.request.contextPath}/assets/img/monitor.png" alt="monitor" class="monitor-icon">
                 <span id="monitor-level">
-                	<%
-                		String userMonitor = userInfo.getUserMoniter();
-                		out.println(userMonitor);
-                	%>
+                <script>
+                /* userMoniter is String type (string to integer) */
+				document.write(parseInt(sessionStorage.getItem("userMoniter"))+"m");
+				</script>
                 </span>
               </div>
             </a>
@@ -63,14 +90,13 @@
           <li class="head-item">
             <!-- 로그아웃 -->
             <a href="${pageContext.request.contextPath}" class="head-link logout-box">
-            	<%
-            	session.removeAttribute("userDTO");
-            	// 우열님이 추가하라고 주신 코드 
-	            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
-	            response.setHeader("Pragma", "no-cache"); 
-	            response.setHeader("Expires", "0");
-           	 	%>
               <img src="${pageContext.request.contextPath}/assets/img/Logout.png" alt="logout" class="logout-top">
+             	<%
+	            session.invalidate();
+           	 	%>
+           	 	<script>
+           	 		document.getElementsByClass('logout-top').addEventListener('click', ()=>sessionStorage.clear());
+           	 	</script>
             </a>
           </li>
         </ul>
