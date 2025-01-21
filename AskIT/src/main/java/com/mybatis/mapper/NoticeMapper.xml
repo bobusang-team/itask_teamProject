@@ -1,2 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+
+	<!-- 공지사항 목록 페이지 -> 상세 페이지 -->
+	<select id="list" parameterType="noticeDTO" resultType="int">
+		SELECT NOTICE_CATEGORY, NOTICE_TITLE, NOTICE_DATE
+		FROM tbl_notice;
+	</select>
+
+	<!-- 공지사항 상세페이지에서 불러오는 데이터 -->
+	<select id="detail" parameterType="noticeDTO" resultType="String">
+		SELECT notice_category, notice_title, notice_text, notice_view, notice_date
+		FROM tbl_notice
+		WHERE notice_num=#{};
+	</select>
+
+	<!-- 중요사항 -->
+	<!-- id, parameterType 팀원끼리 통일하기 -->
+	
+<!-- # 여기서 
+1. DAO 로 불러오는것 만들기
+- dao 에서 메소드 선언하는 방법 -->
+
+</mapper>
