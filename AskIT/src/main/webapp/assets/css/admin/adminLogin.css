@@ -1,0 +1,44 @@
+@charset "UTF-8";
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    
+}
+.adminlogin-container{
+    text-align: center;
+    padding: 30px;
+    width: 300px;
+    border: 1px solid black;
+}
+.logo {
+    margin-bottom: 20px;
+}
+.logo img {
+    width: 200px;
+}
+.admin {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.id, .pw {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #606060;
+    border-radius: 20px;
+    font-size: 14px;
+}
+.login-button {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    background-color: #D96073;
+    color: #DFDFDF;
+    margin-left: 10px;
+    
+}

@@ -30,8 +30,24 @@ public class ArticleDTO {
 	private String articleModifyDate;
 	private int articleView;
 	private int articleMoniter;
+	private String userNick; //관리자페이지에서 필요한 DTO
+	private String grade;
 	
 	
+	
+	
+	public String getUserNick() {
+		return userNick;
+	}
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	public int getUserNum() {
 		return userNum;
 	}

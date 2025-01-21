@@ -43,6 +43,7 @@
       <mapper resource="com/mybatis/mapper/QualMapper.xml" />
       <mapper resource="com/mybatis/mapper/SecMapper.xml" />
       <mapper resource="com/mybatis/mapper/WriteMapper.xml" />
+      <mapper resource="./com/mybatis/mapper/AdminMapper.xml" />
    </mappers>
    
 </configuration>
